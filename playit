@@ -12,11 +12,22 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-filename='/home/chrisd/playlists.txt'
-cmd='mplayer -really-quiet -msgcolor'
+filename='/home/username/playlists.txt'
+cmd='mplayer'
+cmdargs='-really-quiet -msgcolor'
 if [[ -f $filename ]]
 then
 	echo "* Using $filename"
+else
+	echo "* Could not find $filename, please make sure it exists"
+	exit 1
+fi
+if [[ -x $cmd ]]
+then
+	echo "* Using $cmd to play the media"
+else
+	echo "* Could not execute $cmd, please make sure you have $cmd installed"
+	exit 1
 fi
 if [[ -n $1 ]]
 then
@@ -26,10 +37,10 @@ then
 		num=`expr $RANDOM % $lines + 1`
 		line=`sed -n ${num}p $filename`
 		echo "* Randomly picked $line"
-		$cmd "$line"
+		$cmd $cmdargs "$line"
 	else
 		echo "* Searching for $1"
-		$cmd `grep $1 $filename`
+		$cmd $cmdargs `grep $1 $filename`
 	fi
 else
 	echo "* Displaying all streams"
