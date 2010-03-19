@@ -1,0 +1,55 @@
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+  ____      _        _      __   __             _____   
+U|  _"\ u  |"|   U  /"\  u  \ \ / /    ___     |_ " _|  
+\| |_) |/U | | u  \/ _ \/    \ V /    |_"_|      | |    
+ |  __/   \| |/__ / ___ \   U_|"|_u    | |      /| |\   
+ |_|       |_____|_/   \_\    |_|    U/| |\u   u |_|U   
+ ||>>_     //  \\ \\    >>.-,//|(_.-,_|___|_,-._// \\_  
+(__)__)   (_")("_)__)  (__)\_) (__)\_)-' '-(_/(__) (__)
+                       <playit>
+
+By chrelad
+On Fri Mar 19 09:38:05 CDT 2010
+Description..: Quick and light bash program
+   to access your streams.
+Features:
+   - Keyword searching
+   - Random stream selection
+   - List all streams
+Installation:
+   If you are reading this, it's installed.
+Use:
+   - Display all streams
+   user@host > ./playit
+   - Play random stream
+   user@host > ./playit rand
+   - Search for and play stream
+   user@host > ./playit somafm
+Which players are supported:
+   You can use any player to play your streams that
+   supports playing streams. I use mplayer as my
+   backend, as you can see from the program.
+Format of file:
+   One stream URL per line. The filename can
+   be anything you want. You just have to change
+   it in the playit program.
+My playlists.txt file:
+
+http://ice.somafm.com/lush
+http://ice.somafm.com/dronezone
+http://ice.somafm.com/groovesalad
+http://ice.somafm.com/cliqhop
+http://ice.somafm.com/poptron
+http://ice.somafm.com/indiepop

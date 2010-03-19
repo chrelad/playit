@@ -1,0 +1,68 @@
+#!/bin/bash
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# By chrelad
+# On Fri Mar 19 09:38:05 CDT 2010
+# Description..: Quick and light bash program
+#    to access your streams.
+# Features.....:
+#    - Keyword searching
+#    - Random stream selection
+#    - List all streams
+# Installation.:
+#    If you are reading this, it's installed.
+# Use:
+#    # Display all streams
+#    user@host > ./playit
+#    # Play random stream
+#    user@host > ./playit rand
+#    # Search for and play stream
+#    user@host > ./playit somafm
+# Format of file:
+#    One stream URL per line, here is mine as
+#    an example (REMOVE THE LEADING '#'s AND SPACES)
+#    <------ COPY BELOW THIS LINE ------>
+#    http://www.pigradio.com/pig128.pls
+#    http://somafm.com/play/lush
+#    http://ice.somafm.com/lush
+#    http://ice.somafm.com/dronezone
+#    http://ice.somafm.com/groovesalad
+#    http://ice.somafm.com/cliqhop
+#    http://ice.somafm.com/poptron
+#    http://ice.somafm.com/indiepop
+#    <------ COPY ABOVE THIS LINE ------>
+filename='/home/chrisd/playlists.txt'
+cmd='mplayer -really-quiet -msgcolor'
+if [[ -f $filename ]]
+then
+	echo "* Using $filename"
+fi
+if [[ -n $1 ]]
+then
+	if [[ "$1" == "rand" ]]
+	then
+		lines=`grep -c --regexp=.* $filename`
+		num=`expr $RANDOM % $lines + 1`
+		line=`sed -n ${num}p $filename`
+		echo "* Randomly picked $line"
+		$cmd "$line"
+	else
+		echo "* Searching for $1"
+		$cmd `grep $1 $filename`
+	fi
+else
+	echo "* Displaying all streams"
+	cat $filename
+fi
