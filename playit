@@ -12,37 +12,6 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-# By chrelad
-# On Fri Mar 19 09:38:05 CDT 2010
-# Description..: Quick and light bash program
-#    to access your streams.
-# Features.....:
-#    - Keyword searching
-#    - Random stream selection
-#    - List all streams
-# Installation.:
-#    If you are reading this, it's installed.
-# Use:
-#    # Display all streams
-#    user@host > ./playit
-#    # Play random stream
-#    user@host > ./playit rand
-#    # Search for and play stream
-#    user@host > ./playit somafm
-# Format of file:
-#    One stream URL per line, here is mine as
-#    an example (REMOVE THE LEADING '#'s AND SPACES)
-#    <------ COPY BELOW THIS LINE ------>
-#    http://www.pigradio.com/pig128.pls
-#    http://somafm.com/play/lush
-#    http://ice.somafm.com/lush
-#    http://ice.somafm.com/dronezone
-#    http://ice.somafm.com/groovesalad
-#    http://ice.somafm.com/cliqhop
-#    http://ice.somafm.com/poptron
-#    http://ice.somafm.com/indiepop
-#    <------ COPY ABOVE THIS LINE ------>
 filename='/home/chrisd/playlists.txt'
 cmd='mplayer -really-quiet -msgcolor'
 if [[ -f $filename ]]
