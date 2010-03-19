@@ -12,7 +12,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-filename='/home/username/playlists.txt'
+filename='/home/chrisd/playlists.txt'
 cmd='mplayer'
 cmdargs='-really-quiet -msgcolor'
 if [[ -f $filename ]]
@@ -22,11 +22,14 @@ else
 	echo "* Could not find $filename, please make sure it exists"
 	exit 1
 fi
-if [[ -x $cmd ]]
+cmdfile=`which $cmd 2>/dev/null`
+if [[ -x $cmdfile ]]
 then
 	echo "* Using $cmd to play the media"
 else
-	echo "* Could not execute $cmd, please make sure you have $cmd installed"
+	echo "* Could not execute $cmd"
+	echo "  - You may not have $cmd installed"
+	echo "  - You may not have permission to execute $cmd"
 	exit 1
 fi
 if [[ -n $1 ]]
