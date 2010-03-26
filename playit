@@ -38,12 +38,12 @@ then
 	then
 		lines=`grep -c --regexp=.* $filename`
 		num=`expr $RANDOM % $lines + 1`
-		line=`sed -n ${num}p $filename`
+		line=`sed -n ${num}p $filename | sed "s/#.*//"`
 		echo "* Randomly picked $line"
-		$cmd $cmdargs "$line"
+		$cmd $cmdargs $line
 	else
 		echo "* Searching for $1"
-		$cmd $cmdargs `grep $1 $filename`
+		$cmd $cmdargs `grep -P "#.*$1.*" $filename | sed "s/#.*//"`
 	fi
 else
 	echo "* Displaying all streams"
